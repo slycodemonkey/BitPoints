@@ -1,4 +1,4 @@
-var socket = io.connect('http://'+window.location.host);
+var socket = io.connect('//'+window.location.host);
 var roomId = BP.room.roomId;
 var username = BP.user.name;
 var avatar = BP.user.avatar;
