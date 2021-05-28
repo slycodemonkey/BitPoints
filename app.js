@@ -1,3 +1,4 @@
+var sslRedirect = require('heroku-ssl-redirect').default;
 var express = require('express');
 var http = require('http');
 var https = require('https');
@@ -112,12 +113,10 @@ app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
 app.get('/.well-known/acme-challenge/:content', function(req, res) {
     res.send('oq-OsulF5JlEYofdMC9WFMH3j8PQDUwJThwOdHHab54.n-PCJWon7UBcvnOb3hiQInfn15uFqQDNBA0UWFBO35w')
 });
-app.get('*', function(req, res) {
-    res.redirect('https://' + req.headers.host + req.url);
-});
+app.use(sslRedirect());
 
 // Listen on the port.
-server.listen(app.get('port'), function() {
+server.listen(app.get('port') || 3000, function() {
 	logger.info('BitPoints is ready to go at http://localhost:' + config.port);
 });
 
