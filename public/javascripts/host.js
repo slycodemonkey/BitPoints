@@ -55,7 +55,7 @@ var decks = {
 	]
 };
 
-var socket = io.connect('https://'+window.location.host);
+var socket = io.connect('http://'+window.location.host);
 var roomId = BP.room.roomId;
 var title = BP.room.title;
 var votes = {};
