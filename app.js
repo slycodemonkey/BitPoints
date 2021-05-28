@@ -1,4 +1,4 @@
-var sslRedirect = require('heroku-ssl-redirect').default;
+//var sslRedirect = require('heroku-ssl-redirect').default;
 var express = require('express');
 var http = require('http');
 var https = require('https');
@@ -8,7 +8,7 @@ var routes = require('./routes');
 var config = require('./config.js').config;
 var app = express();
 var server = https.createServer(app);
-var io = require('socket.io')(server, {log: true});
+var io = require('socket.io')(server, {log: false});
 var lessCompiler = require('express-less-middleware')();
 var logger = require('./logger');
 
@@ -110,10 +110,10 @@ app.get(/^\/host\/([0-9]+)\/([-%a-zA-Z0-9]*)/, routes.host);
 app.get('/join/:id', routes.join);
 app.get('/kick', routes.kick);
 app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
-app.use(sslRedirect());
+//app.use(sslRedirect());
 
 // Listen on the port.
-server.listen(app.get('port') || 3000, function() {
+server.listen(app.get('port'), function() {
 	logger.info('BitPoints is ready to go at http://localhost:' + config.port);
 });
 
