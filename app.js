@@ -1,4 +1,4 @@
-var sslRedirect = require('heroku-ssl-redirect').default;
+//var sslRedirect = require('heroku-ssl-redirect').default;
 var express = require('express');
 var http = require('http');
 var https = require('https');
