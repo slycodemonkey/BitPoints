@@ -110,7 +110,7 @@ app.get('/join/:id', routes.join);
 app.get('/kick', routes.kick);
 app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
 app.get('/.well-known/acme-challenge/:content', function(req, res) {
-    res.send('SpfzjuxxRHaH30Nf4POal7QIXFGeF9CoN9MIX2-SlRU.n-PCJWon7UBcvnOb3hiQInfn15uFqQDNBA0UWFBO35w')
+    res.send('oq-OsulF5JlEYofdMC9WFMH3j8PQDUwJThwOdHHab54.n-PCJWon7UBcvnOb3hiQInfn15uFqQDNBA0UWFBO35w')
 });
 
 // Listen on the port.
