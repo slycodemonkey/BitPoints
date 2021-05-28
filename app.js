@@ -113,7 +113,7 @@ app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
 //app.use(sslRedirect());
 
 // Listen on the port.
-server.listen(app.get('port') || 3000, function() {
+server.listen(app.get('port'), function() {
 	logger.info('BitPoints is ready to go at http://localhost:' + config.port);
 });
 
