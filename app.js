@@ -110,7 +110,7 @@ app.get(/^\/host\/([0-9]+)\/([-%a-zA-Z0-9]*)/, routes.host);
 app.get('/join/:id', routes.join);
 app.get('/kick', routes.kick);
 app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
-app.use(sslRedirect());
+//app.use(sslRedirect());
 
 // Listen on the port.
 server.listen(app.get('port') || 3000, function() {
