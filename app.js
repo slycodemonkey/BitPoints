@@ -102,6 +102,7 @@ if (config.debug) {
 	app.use(require('morgan')('dev'));
 	app.use(require('errorhandler')());
 }
+app.use(sslRedirect());
 
 // Routes.
 app.get('/', routes.index);
@@ -110,7 +111,6 @@ app.get(/^\/host\/([0-9]+)\/([-%a-zA-Z0-9]*)/, routes.host);
 app.get('/join/:id', routes.join);
 app.get('/kick', routes.kick);
 app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
-app.use(sslRedirect());
 
 // Listen on the port.
 server.listen(app.get('port'), function() {
