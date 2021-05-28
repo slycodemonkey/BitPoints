@@ -8,7 +8,7 @@ var routes = require('./routes');
 var config = require('./config.js').config;
 var app = express();
 var server = https.createServer(app);
-var io = require('socket.io')(server, {log: false});
+var io = require('socket.io')(server, {log: true});
 var lessCompiler = require('express-less-middleware')();
 var logger = require('./logger');
 
@@ -110,9 +110,6 @@ app.get(/^\/host\/([0-9]+)\/([-%a-zA-Z0-9]*)/, routes.host);
 app.get('/join/:id', routes.join);
 app.get('/kick', routes.kick);
 app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
-app.get('/.well-known/acme-challenge/:content', function(req, res) {
-    res.send('oq-OsulF5JlEYofdMC9WFMH3j8PQDUwJThwOdHHab54.n-PCJWon7UBcvnOb3hiQInfn15uFqQDNBA0UWFBO35w')
-});
 app.use(sslRedirect());
 
 // Listen on the port.
