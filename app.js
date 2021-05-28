@@ -112,13 +112,6 @@ app.get('/kick', routes.kick);
 app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
 app.use(sslRedirect());
 
-// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
-app.all('*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
 // Listen on the port.
 server.listen(app.get('port'), function() {
 	logger.info('BitPoints is ready to go at http://localhost:' + config.port);
