@@ -112,6 +112,10 @@ app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
 app.get('/.well-known/acme-challenge/:content', function(req, res) {
     res.send('oq-OsulF5JlEYofdMC9WFMH3j8PQDUwJThwOdHHab54.n-PCJWon7UBcvnOb3hiQInfn15uFqQDNBA0UWFBO35w')
 });
+app.enable('trust proxy');
+app.use((req, res, next) => {
+    req.secure ? next() : res.redirect('https://' + req.headers.host + req.url)
+});
 
 // Listen on the port.
 server.listen(app.get('port'), function() {
