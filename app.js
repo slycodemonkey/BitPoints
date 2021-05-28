@@ -1,5 +1,6 @@
 var express = require('express');
 var http = require('http');
+var https = require('https');
 var path = require('path');
 var _ = require('lodash');
 var routes = require('./routes');
@@ -108,6 +109,9 @@ app.get(/^\/host\/([0-9]+)\/([-%a-zA-Z0-9]*)/, routes.host);
 app.get('/join/:id', routes.join);
 app.get('/kick', routes.kick);
 app.get(/^\/([0-9a-z]{1,5})$/, routes.invite);
+app.get('/.well-known/acme-challenge/:content', function(req, res) {
+    res.send('SpfzjuxxRHaH30Nf4POal7QIXFGeF9CoN9MIX2-SlRU.n-PCJWon7UBcvnOb3hiQInfn15uFqQDNBA0UWFBO35w')
+});
 
 // Listen on the port.
 server.listen(app.get('port'), function() {
