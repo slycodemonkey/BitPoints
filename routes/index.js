@@ -34,7 +34,6 @@ exports.create = function(req, res) {
 exports.host = function(req, res) {
 	var id = req.params[0],
 		title = req.params[1] ? req.params[1] : 'Room '+id;
-
 	res.cookie('roomID', id, { maxAge: 900000 });
 	res.render('host', {
 		room: {

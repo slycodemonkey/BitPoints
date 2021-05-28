@@ -91,6 +91,10 @@ var useNearestRounding = function() {
 	return $('input[name=roundNearest]:checked').val();
 };
 
+var displayAverage = function() {
+	return $('input[name=displayAverage]:checked').val();
+};
+
 var getNearestCard = function(average, deck) {
   var compareArr = [];
   BP.each(deck, function(card) {
@@ -170,6 +174,7 @@ var processVotes = function() {
     voteData.trueAverage = voteData.average;
     voteData.average = Math.round(voteData.average);
   }
+
 };
 
 var page = new BP.Page({
@@ -327,6 +332,7 @@ var page = new BP.Page({
 		$('html').removeClass('voting');
 
 		processVotes();
+        var showAverage = displayAverage();
 
 		// If there's only one person, vote data is useless
 		if(voteData.numVotes > 1) {
@@ -359,11 +365,13 @@ var page = new BP.Page({
         this.$nearestCard.show().find('.val').text(nearestText);
 			}
 
-			this.$average.show().find('.val').text(outcomeText);
-			this.$average.show().find('.val').attr('title', averageText);
+            if (showAverage) {
+			    this.$average.show().find('.val').text(outcomeText);
+			    this.$average.show().find('.val').attr('title', averageText);
+            }
 
 			// Animate fun-times if everyone votes the same
-			if(voteData.numVotes > 3 && voteData.allVotesEqual){
+			if(voteData.numVotes >= 2 && voteData.allVotesEqual){
 				this.$('.card').addClass('spin');
 			}
 		}
